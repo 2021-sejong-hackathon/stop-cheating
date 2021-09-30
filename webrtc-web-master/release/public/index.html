@@ -125,13 +125,14 @@
     function grabWebCamVideo() {
         console.log('Getting user media (video) ...');
 
-        navigator.getWebcam = (navigator.getUserMedia || navigator.webKitGetUserMedia || navigator.moxGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
         if (navigator.mediaDevices) {
             navigator.mediaDevices.getUserMedia({ audio: false, video: true })
                 .then(gotStream)
                 .catch(function (e) { alert('getUserMedia() error: ' + e.name); });
         }
         else {
+            navigator.getWebcam = (navigator.getUserMedia || navigator.webKitGetUserMedia || navigator.moxGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
+            console.log(navigator.getWebcam);
             navigator.getWebcam({ audio: false, video: true },
                 function (stream) {
                     gotStream(stream);
