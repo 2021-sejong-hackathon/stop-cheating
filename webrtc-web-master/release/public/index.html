@@ -102,6 +102,44 @@
 <script>
     'use strict';
 
+    /**
+     * Send message to signaling server
+     */
+    function sendMessage(message) {
+        console.log('Client sending message: ', message);
+        socket.emit('message', message);
+    }
+
+    function gotStream(stream) {
+        console.log('getUserMedia video stream URL:', stream);
+        window.stream = stream; // stream available to console
+        video.srcObject = stream;
+        video.onloadedmetadata = function () {
+            photo.width = photoContextW = video.videoWidth;
+            photo.height = photoContextH = video.videoHeight;
+            console.log('gotStream with width and height:', photoContextW, photoContextH);
+        };
+        show(snapBtn);
+    }
+
+    function grabWebCamVideo() {
+        console.log('Getting user media (video) ...');
+
+        navigator.getWebcam = (navigator.getUserMedia || navigator.webKitGetUserMedia || navigator.moxGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
+        if (navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({  audio: false, video: true })
+                .then(gotStream)
+                .catch(function (e) { alert('getUserMedia() error: ' + e.name); });
+        }
+        else {
+            navigator.getWebcam({ audio: false, video: true },
+                function (stream) {
+                    gotStream(stream);
+                },
+                function () { alert('getUserMedia() error: ' + e.name); });
+        }
+    }
+
     const configuration = null;
 
     // var roomURL = document.getElementById('url');
@@ -199,38 +237,7 @@
     });
 
 
-    /**
-     * Send message to signaling server
-     */
-    function sendMessage(message) {
-        console.log('Client sending message: ', message);
-        socket.emit('message', message);
-    }
 
-
-    function grabWebCamVideo() {
-        console.log('Getting user media (video) ...');
-        navigator.mediaDevices.getUserMedia({
-            audio: false,
-            video: true
-        })
-            .then(gotStream)
-            .catch(function (e) {
-                alert('getUserMedia() error: ' + e.name);
-            });
-    }
-
-    function gotStream(stream) {
-        console.log('getUserMedia video stream URL:', stream);
-        window.stream = stream; // stream available to console
-        video.srcObject = stream;
-        video.onloadedmetadata = function () {
-            photo.width = photoContextW = video.videoWidth;
-            photo.height = photoContextH = video.videoHeight;
-            console.log('gotStream with width and height:', photoContextW, photoContextH);
-        };
-        show(snapBtn);
-    }
 
     /****************************************************************************
      * WebRTC peer connection and data channel
