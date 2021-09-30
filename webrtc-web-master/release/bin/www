@@ -1,6 +1,5 @@
 const app = require('../app');
-const debug = require('debug')('2021_tourapi:server');
-const http = require('http');
+const https = require('https');
 const os = require('os');
 const {Server} = require('socket.io');
 
@@ -40,11 +39,10 @@ const onError = error => {
 const onListening = () => {
     const addr = server.address();
     const bind = typeof addr === 'string' ? 'pipe' + addr : 'port' + addr.port;
-    debug('Listening on' + bind)
 }
 
 const port = normalizePort(process.env.PORT || 3000);
-const server = http.createServer(app)
+const server = https.createServer(app)
 
 server.listen(port)
 server.on('error', onError);
