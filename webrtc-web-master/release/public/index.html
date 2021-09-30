@@ -129,6 +129,7 @@
 
 // Connect to the signaling server
     const socket = io.connect();
+    console.log(socket);
 
     socket.on('ipaddr', function (ipaddr) {
         console.log('Server IP address is: ' + ipaddr);
