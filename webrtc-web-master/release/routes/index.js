@@ -6,6 +6,9 @@ router.get('/hi', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
+router.get('/demo', (req, res) => {
+    res.sendFile(__dirname + '/demo.html');
+})
 // 라우터 파일 등록하기
 
 
