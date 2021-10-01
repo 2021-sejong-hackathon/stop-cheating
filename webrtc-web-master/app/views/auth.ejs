@@ -5,10 +5,12 @@
     <title>Title</title>
     <link rel="stylesheet" href="/css/reset.css"/>
     <link rel="stylesheet" href="/css/common.css"/>
-
+    <link rel="stylesheet" href="/css/auth.css"/>
     <script defer src="/js/face-api.min.js"></script>
     <script defer src="/js/script.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.js" integrity="sha512-AQMSn1qO6KN85GOfvH6BWJk46LhlvepblftLHzAv1cdIyTWPBKHX+r+NOXVVw6+XQpeW4LJk/GTmoP48FLvblQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.js"
+            integrity="sha512-AQMSn1qO6KN85GOfvH6BWJk46LhlvepblftLHzAv1cdIyTWPBKHX+r+NOXVVw6+XQpeW4LJk/GTmoP48FLvblQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
 <nav>
@@ -25,10 +27,17 @@
     </div>
 </nav>
 <main class="pd-horizon main">
-    <div id="camera"></div>
-    <button onclick="take_snapshot()">개인정보동의</button>
-    <input id="verify" type="button" value="verify">
-    <div id=results></div>
+    <div class="auth-modal">
+        <div class="img-container">
+            <div class="image-div" id="camera"></div>
+            <div class="image-div" id="captureImg"></div>
+        </div>
+        <div>
+            <button class="button" id="snapshot-btn" onclick="take_snapshot()" disabled>개인정보동의</button>
+            <button class="button" id="verify-btn" type="button" value="verify" disabled>verify</button>
+        </div>
+        <div id=results></div>
+    </div>
 </main>
 </body>
 <script>

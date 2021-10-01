@@ -1,0 +1,52 @@
+html, body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+.main{
+    height: 90%;
+    display: flex;
+    justify-content: center;
+}
+
+.auth-modal{
+    background-color: #b8cfff;
+    height : 30rem;
+    width: 40rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: auto 0;
+}
+
+.button {
+    width: 8rem;
+    height : 2rem;
+    margin : 0rem 1rem;
+    background: #e7e7e7;
+    border: 1px solid #E3E7EB;
+    border-radius: 3px;
+}
+
+.active{
+    background: #dce7ff;
+}
+
+.img-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-div{
+    width: 10rem;
+}
+
+#snapedImg{
+    width: 10rem;
+}
+.
+
