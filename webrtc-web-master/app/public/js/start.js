@@ -16,7 +16,7 @@ webgazer
       webgazer.pause();
     }
     if (var1 == 2) {
-      console.log(data, timestamp)
+      console.log(data, new Date(timestamp).getTime());
     }
   })
   .begin()

@@ -9,6 +9,10 @@ router.get('/hi', (req, res) => {
 router.get('/demo', (req, res) => {
     res.sendFile(__dirname + '/demo.html');
 })
+
+router.get('/ejs', (req, res) => {
+    res.render('hello');
+})
 // 라우터 파일 등록하기
 
 

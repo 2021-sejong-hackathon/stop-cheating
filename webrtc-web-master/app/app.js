@@ -16,9 +16,13 @@ if (process.env.NODE_ENV === 'production') {
     app.use(morgan('dev'));
 }
 
+
 app.use(cookieParser());
 app.use(express.json());
+
+app.set('view engine','ejs');
 app.use(express.static(__dirname + '/public')); // 1
+
 app.use('/', router);
 
 // 404 처리
