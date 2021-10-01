@@ -1,5 +1,5 @@
 const app = require('../app');
-const https = require('https');
+const http = require('http');
 const os = require('os');
 const {Server} = require('socket.io');
 
@@ -42,7 +42,7 @@ const onListening = () => {
 }
 
 const port = normalizePort(process.env.PORT || 3000);
-const server = https.createServer(app)
+const server = http.createServer(app)
 
 server.listen(port)
 server.on('error', onError);
