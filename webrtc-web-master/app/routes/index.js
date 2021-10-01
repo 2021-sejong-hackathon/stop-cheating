@@ -17,6 +17,10 @@ router.get('/login', (req, res) => {
 router.get('/auth', (req, res) => {
     res.render('auth');
 })
+
+router.get('/test', (req, res) => {
+    res.render('test');
+})
 // 라우터 파일 등록하기
 
 
